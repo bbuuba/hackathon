@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Firebase Authentication</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Arial', sans-serif;
+                background: #f4f4f4;
+            }
+
+            #login-box {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 400px;
+                padding: 40px;
+                background: #fff;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            h1 {
+                margin: 0 0 30px 0;
+                font-size: 24px;
+                color: #333;
+            }
+
+            input {
+                display: block;
+                box-sizing: border-box;
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 20px;
+                font-size: 16px;
+            }
+
+            input[type="submit"] {
+                background: #4caf50;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            p {
+                margin: 20px 0;
+                font-size: 14px;
+                color: #333;
+            }
+
+            a {
+                color: #4caf50;
+                text-decoration: none;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="login-box">
+            <h1>Login</h1>
+
+            <input type="text" id="email" name="email" placeholder="E-mail"/>
+            <input type="password" id="password" name="password" placeholder="Password"/>
+            <input type="submit" id="login" name="login" value="Login"/>
+            
+            <p>Don't have an account? <a href="sign-in.html">Sign in</a>.</p>
+        </div>
+    </body>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDV3grH1dHT4M0sHJIvUMdQ4PUfVM1cwC8",
+          authDomain: "hackathon-7b89e.firebaseapp.com",
+          databaseURL: "https://hackathon-7b89e-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "hackathon-7b89e",
+          storageBucket: "hackathon-7b89e.appspot.com",
+          messagingSenderId: "109917703775",
+          appId: "1:109917703775:web:a2a8e6df70b4a22401d5ea",
+          measurementId: "G-C622MBMJSD"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app); 
+        const auth = getAuth();
+    
+        console.log("ceva")
+        login.addEventListener('click', (e) => {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in 
+                    const user = userCredential.user;
+                    const dt = new Date();
+                    update(ref(database, 'users/' + user.uid),{
+                        last_login: dt,
+                    })
+                    alert('User logged in!');
+                    window.isUserLoggedIn=true;
+                    window.location.href = 'index.html';
+                    // ...
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        })
+
+        const user = auth.currentUser;
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/auth.user
+                const uid = user.uid;
+                // ...
+            } else {
+                // User is signed out
+                // ...
+            }
+        });
+
+        logout.addEventListener('click',(e) => {
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                alert('User logged out')
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+        })
+    </script>
+</html>

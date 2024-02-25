@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Course Title</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('bg.png') center/cover fixed no-repeat; /* Set the background image */
+        }
+
+        nav {
+            display: flex;
+            align-items: center; /* Adjusted to vertically align content */
+            justify-content: space-between;
+            background-color: #201f1f; /* Dark grey background */
+            color: #fff;
+            padding: 10px 20px; /* Adjusted padding for better spacing */
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        nav div {
+            padding: 0; /* Adjusted padding for better spacing */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .course-info {
+            background-color: #a9a8a8a5; /* Semi-transparent dark grey background */
+            padding: 40px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(63, 63, 63, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .course-info.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .course-info h2 {
+            color: #fff;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .course-info p {
+            color: #ccc; /* Light grey text */
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .enroll-btn {
+            background-color: #333; /* Dark grey button background */
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .enroll-btn:hover {
+            background-color: #555; /* Darker grey on hover */
+        }
+
+        .content-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .content-section p {
+            color: #fff;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .image-container img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div>AImagine</div>
+        <div><a href="index.html">Home</a>
+            <a href="index.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+    </nav>
+    <div class="container">
+        <!-- Container 1 -->
+        <div class="course-info" id="course-info1">
+            <h2>Pong AI</h2>
+            <p>Create an engaging and challenging Pong AI game where players can compete against an intelligent computer opponent. This classic arcade game is reimagined with a twist as the AI adapts and evolves, providing an increasingly formidable challenge.</p>
+            <p>Price: $XX.XX</p>
+            <a href="transaction.html" class="enroll-btn">Enroll Now</a>
+        </div>
+
+        <!-- Container 2 -->
+        <div class="course-info" id="course-info2">
+            <h2>Flappy Bird AI</h2>
+            <p>Embark on a coding adventure by developing a Flappy Bird AI that can autonomously navigate through the iconic pipes! This project challenges you to create an artificial intelligence system capable of learning and mastering the timing and precision required to achieve high scores in the addictive Flappy Bird game.</p>
+            <p>Price: $XX.XX</p>
+            <a href="transaction.html" class="enroll-btn">Enroll Now</a>
+        </div>
+
+        <!-- Container 3 -->
+        <div class="course-info" id="course-info3">
+            <h2>Evolutionary Simulation Game</h2>
+            <p>Dive into the fascinating world of evolution with this simulation game that leverages artificial intelligence to model the process of natural selection and adaptation. Players will witness the emergence of diverse life forms, each governed by its own AI-driven behavior, as they navigate through a dynamic and ever-changing environment.</p>
+            <p>Price: $XX.XX</p>
+            <a href="transaction.html" class="enroll-btn">Enroll Now</a>
+        </div>
+
+        <!-- Existing content -->
+        <div class="content-section">
+            <h2>What You'll Learn</h2>
+            <p>
+                Embark on a transformative learning journey through three courses. Develop a Pong AI game, master Flappy Bird AI challenges, and dive into Evolutionary Simulation Game Development. These courses cover game design, neural networks, and genetic algorithms, offering a comprehensive skill set in game development, artificial intelligence, and simulation.</p>
+            <div class="image-container">
+                <a href="https://example.com/page1.html"><img src="Animation-pongtrain.gif" alt="Image 1"></a>
+                <a href="https://example.com/page2.html"><img src="Animation-flappy-bird.gif" alt="Image 2"></a>
+                <a href="https://example.com/page3.html"><img src="Animation-simulare.gif" alt="Image 3"></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var courseInfo1 = document.getElementById("course-info1");
+            courseInfo1.classList.add("show");
+
+            var courseInfo2 = document.getElementById("course-info2");
+            courseInfo2.classList.add("show");
+
+            var courseInfo3 = document.getElementById("course-info3");
+            courseInfo3.classList.add("show");
+        });
+    </script>
+</body>
+
+</html>

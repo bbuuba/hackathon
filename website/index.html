@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Selling Website</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #000;
+            background-image: url('bg.png');
+            background-attachment: fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        nav {
+            background-color: #222;
+            overflow: hidden;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        nav a {
+            display: inline-block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #444;
+        }
+
+        header {
+            background-color: #111;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        section.about-us {
+            margin-bottom: 40px;
+            background-color: rgba(249, 249, 249, 0.269);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        .animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .course {
+    background-color: rgba(255, 255, 255, 0.42); /* Adjust the alpha value (0.95) for opacity */
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(192, 185, 185, 0.1);
+    text-align: center; /* Center the text */
+    max-width: 300px;
+    margin: 10px auto;
+    transition: transform 0.3s ease-in-out; /* Add transition for smooth effect */
+}
+
+.course:hover {
+    transform: scale(1.05); /* Make it a little bit bigger on hover */
+}
+
+.course h3,
+.course p {
+    color: #373636;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.course a {
+    color: #fff;
+    background-color: #333; /* Dark grey background for the "Enroll Now" button */
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
+
+
+
+        section#exploreMore {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            text-align: center;
+        }
+
+        #exploreMore img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        #exploreMore ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #exploreMore ul li {
+            margin-bottom: 10px;
+        }
+
+        section#allCourses {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+        }
+
+        section#allCourses a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section#featuredCourses {
+    margin-bottom: 40px;
+    text-align: center; /* Center the text */
+}
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="curs.html">Courses</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <header id="header">
+        <h1>Course Selling Website</h1>
+    </header>
+
+    <section class="about-us animate" id="aboutUs">
+        <h2>About Us</h2>
+        <p>Welcome to the Course Selling Website! We strive to provide high-quality courses to enhance your skills
+            and knowledge.</p>
+        <p>Our team of experienced instructors is dedicated to delivering valuable content to help you succeed in your
+            learning journey.</p>
+    </section>
+
+    <!-- Add your navbar content here -->
+
+    <section class="animate" id="featuredCourses">
+        <h2>     Featured Courses</h2>
+
+        <div class="course">
+            <h3>Pong AI</h3>
+            <p>Price: $XX.XX</p>
+            <a href="course_details.html?id=1">Enroll Now</a>
+        </div>
+
+        <div class="course">
+            <h3>Flappy bird AI</h3>
+            <p>Price: $XX.XX</p>
+            <a href="course_details.html?id=2">Enroll Now</a>
+        </div>
+
+        <div class="course">
+            <h3>Evolutionary Simulation Game</h3>
+            <p>Price: $XX.XX</p>
+            <a href="course_details.html?id=3">Enroll Now</a>
+        </div>
+    </section>
+
+    <section class="animate" id="exploreMore">
+        <h2>Explore More</h2>
+        <p>Discover a variety of courses to suit your learning needs. Check out our full catalog on the <a
+                href="curs.html">Courses page</a>.</p>
+
+        <p>Expand your knowledge and skills with our diverse range of courses. Whether you are a beginner or an
+            experienced professional, we have something for everyone.</p>
+
+        <p>Why choose our courses?</p>
+        <ul>
+            <li>Expert instructors with real-world experience</li>
+            <li>Interactive and engaging learning materials</li>
+            <li>Flexible schedules to fit your lifestyle</li>
+            <li>Affordable prices with no hidden fees</li>
+        </ul>
+
+        <p>Embark on a journey of continuous learning with Course Selling Website!</p>
+    </section>
+
+    <section class="animate" id="allCourses">
+        <h2>All Courses</h2>
+        <p>Explore all available courses <a href="courses.html">here</a>.</p>
+    </section>
+
+    <footer class="animate" id="footer">
+        <p>&copy; 2024 Course Selling Website. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.addEventListener("scroll", function () {
+                const aboutUs = document.getElementById("aboutUs");
+                const featuredCourses = document.getElementById("featuredCourses");
+                const exploreMore = document.getElementById("exploreMore");
+                const allCourses = document.getElementById("allCourses");
+                const footer = document.getElementById("footer");
+
+                if (isElementInViewport(aboutUs)) {
+                    aboutUs.classList.add("animated");
+                }
+
+                if (isElementInViewport(featuredCourses)) {
+                    featuredCourses.classList.add("animated");
+                }
+
+                if (isElementInViewport(exploreMore)) {
+                    exploreMore.classList.add("animated");
+                }
+
+                if (isElementInViewport(allCourses)) {
+                    allCourses.classList.add("animated");
+                }
+
+                if (isElementInViewport(footer)) {
+                    footer.classList.add("animated");
+                }
+            });
+
+            function isElementInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+        });
+    </script>
+
+</body>
+
+</html>

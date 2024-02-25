@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll Now</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://via.placeholder.com/1920x1080');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            color: #fff;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #ffffff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .hidden {
+            display: none;
+        }
+        #error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Enroll Now</h1>
+        <p>Fill out the form below to enroll in the course:</p>
+        <form id="payment-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone"><br><br>
+            <label for="course">Course:</label>
+            <select id="course" name="course" required>
+                <option value="">Select a course</option>
+                <option value="web-dev">Web Development</option>
+                <option value="data-science">Data Science</option>
+                <option value="graphic-design">Graphic Design</option>
+            </select><br><br>
+            <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+            <button id="submit">
+                <div class="spinner hidden" id="spinner"></div>
+                <span id="button-text">Enroll Now</span>
+            </button>
+            <p id="error-message"></p>
+        </form>
+    </div>
+
+    <script>
+        var stripe = Stripe('your_stripe_publishable_key');
+        var elements = stripe.elements();
+        
+        var cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+        
+        var form = document.getElementById('payment-form');
+        var submitButton = document.getElementById('submit');
+        var spinner = document.getElementById('spinner');
+        var buttonText = document.getElementById('button-text');
+        var errorMessage = document.getElementById('error-message');
+        
+        form.addEventListener('submit', function(ev) {
+            ev.preventDefault();
+            stripe.createToken(cardElement).then(function(result) {
+                if (result.error) {
+                    errorMessage.textContent = result.error.message;
+                } else {
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+        
+        function stripeTokenHandler(token) {
+            // Simulating payment processing delay
+            setTimeout(function() {
+                spinner.classList.remove('hidden');
+                buttonText.classList.add('hidden');
+                errorMessage.textContent = '';
+                
+                // Simulating successful payment
+                setTimeout(function() {
+                    console.log(token);
+                    spinner.classList.add('hidden');
+                    buttonText.classList.remove('hidden');
+                    alert('Payment successful! You are now enrolled.'); // You can customize this success message
+                    form.reset(); // Reset the form after successful payment
+                }, 2000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
